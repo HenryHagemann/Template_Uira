@@ -1,0 +1,128 @@
+{
+  // =========================================================
+  // Build Automático
+  // =========================================================
+
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.autoView.run": "onBuilt",
+
+  // =========================================================
+  // Root File
+  // =========================================================
+
+  "latex-workshop.latex.rootFile.useSubFile": false,
+
+  // =========================================================
+  // Recipe Principal
+  // =========================================================
+
+  "latex-workshop.latex.recipe.default": "latexmk: PDF na raiz, auxiliares em build",
+
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk: PDF na raiz, auxiliares em build",
+      "tools": [
+        "latexmk-pdf-build"
+      ]
+    }
+  ],
+
+  // =========================================================
+  // Ferramentas
+  // =========================================================
+
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-pdf-build",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-shell-escape",
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-auxdir=build",
+        "%DOC%"
+      ]
+    }
+  ],
+
+  // =========================================================
+  // PDF Viewer
+  // =========================================================
+
+  // PDF dentro do VS Code
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // Mantém o preview atualizado
+  "latex-workshop.view.pdf.ref.viewer": "auto",
+
+  // Restaurar posição do cursor
+  "latex-workshop.view.pdf.internal.cursor.restore": true,
+
+  // Double click no PDF -> vai para o TEX
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
+  // TEX -> PDF automático após build
+  "latex-workshop.synctex.afterBuild.enabled": true,
+
+  // Melhor sincronização
+  "latex-workshop.synctex.synctexjs.enabled": true,
+
+  // =========================================================
+  // Viewer Layout
+  // =========================================================
+
+  // Mantém PDF aberto ao lado
+  "workbench.editor.enablePreview": false,
+
+  // =========================================================
+  // Mensagens
+  // =========================================================
+
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": true,
+
+  // =========================================================
+  // Lint automático em save (.tex)
+  // =========================================================
+
+  "triggerTaskOnSave.tasks": {
+    "LaTeX Lint": [
+      "**/*.tex"
+    ]
+  },
+  "triggerTaskOnSave.showNotifications": false,
+  "triggerTaskOnSave.restart": true,
+
+  // =========================================================
+  // Limpeza
+  // =========================================================
+
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.fls",
+    "*.fdb_latexmk",
+    "*.log",
+    "*.out",
+    "*.toc",
+    "*.lof",
+    "*.lot",
+    "*.synctex.gz",
+
+    "build/*.aux",
+    "build/*.bbl",
+    "build/*.blg",
+    "build/*.fls",
+    "build/*.fdb_latexmk",
+    "build/*.log",
+    "build/*.out",
+    "build/*.toc",
+    "build/*.lof",
+    "build/*.lot",
+    "build/*.synctex.gz",
+    "build/svg-inkscape"
+  ]
+}

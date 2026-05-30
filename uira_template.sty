@@ -1,0 +1,395 @@
+%===================================================================
+% uira_template.sty
+% Template Uira Aerodesign
+%===================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uira_template}[2026/05/19 Template Uira Aerodesign corrigido]
+
+
+%===================================================================
+% CODIFICACAO E IDIOMA
+%===================================================================
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[brazilian]{babel}
+\RequirePackage{newpxtext}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=2000
+\emergencystretch=3em
+
+%===================================================================
+% GEOMETRIA E FORMATACAO GERAL
+%===================================================================
+
+\RequirePackage[
+    a4paper,
+    left=2cm,
+    right=2cm,
+    top=1.25cm,
+    bottom=1.25cm,
+    includeheadfoot
+]{geometry}
+
+\RequirePackage{fancyhdr}
+
+% Margem superior + cabecalho = 2.7 cm
+% 1.25 cm + 1.00 cm + 0.45 cm = 2.70 cm
+\setlength{\headheight}{1.25cm}
+\setlength{\headsep}{0.20cm}
+
+% Distancia entre a linha-base do rodape e o fim do corpo do texto
+\setlength{\footskip}{1.0cm}
+
+\RequirePackage{setspace}
+\RequirePackage{indentfirst}
+\RequirePackage{changepage}
+
+% Espacamento entre linhas: 1.2
+\setstretch{1.2}
+
+% Espacamento entre paragrafos e recuo da primeira linha
+\setlength{\parskip}{0.2em}
+\setlength{\parindent}{4em}
+
+%===================================================================
+% PACOTES GRAFICOS, TABELAS E FIGURAS
+%===================================================================
+
+\RequirePackage{graphicx}
+\RequirePackage{svg}
+\RequirePackage[final]{pdfpages}
+
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage{multicol}
+\RequirePackage{longtable}
+\RequirePackage{makecell}
+\RequirePackage{tablefootnote}
+
+\RequirePackage{float}
+\RequirePackage[section]{placeins}
+
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+%===================================================================
+% MATEMATICA E SIMBOLOS
+%===================================================================
+
+\RequirePackage{amsmath}
+\RequirePackage{systeme}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{gensymb}
+\RequirePackage{esvect}
+\RequirePackage{siunitx}
+
+\sisetup{
+    locale = FR,
+    per-mode = symbol,
+    number-unit-product = {},
+    detect-all
+}
+
+%===================================================================
+% TEXTO, CORES E UTILITARIOS
+%===================================================================
+
+\RequirePackage{xcolor}
+\RequirePackage{color,soul}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{textcomp}
+\RequirePackage{url}
+\RequirePackage{enumitem}
+\RequirePackage{dashrule}
+\RequirePackage{verbatim}
+\RequirePackage{blindtext}
+\RequirePackage{lipsum}
+\RequirePackage{layout}
+
+%===================================================================
+% GRAFICOS E AMBIENTES ESPECIAIS
+%===================================================================
+
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+% \RequirePackage{tikz} % Ativar somente se necessario. Pode deixar a compilacao mais lenta.
+
+\RequirePackage{trivfloat}
+\trivfloat{quadro}
+
+%===================================================================
+% SUMARIO E NUMERACAO
+%===================================================================
+
+\RequirePackage{tocloft}
+
+% Pontilhado no sumario ate o numero da pagina
+\renewcommand{\cftchapdotsep}{1.5}
+\renewcommand{\cftsecdotsep}{2.5}
+\renewcommand{\cftsubsecdotsep}{3.5}
+\renewcommand{\cftsubsubsecdotsep}{4.5}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\makeatletter
+\renewcommand{\thesection}{%
+  \ifnum\c@chapter<1
+    \@arabic\c@section
+  \else
+    \thechapter.\@arabic\c@section
+  \fi
+}
+\makeatother
+
+%===================================================================
+% COMANDOS AUXILIARES
+%===================================================================
+
+\newcommand{\tsup}[1]{\textsuperscript{#1}}
+\newcommand{\tsub}[1]{\textsubscript{#1}}
+
+% \aref usa \autoref, que vem do hyperref.
+% O hyperref e carregado mais abaixo.
+\newcommand{\aref}[1]{\autoref{#1}}
+
+%===================================================================
+% INFORMACOES DO DOCUMENTO
+%===================================================================
+
+\makeatletter
+
+\newcommand{\instituicao}[1]{\def\uira@instituicao{#1}}
+\newcommand{\competicao}[1]{\def\uira@competicao{#1}}
+\newcommand{\equipe}[1]{\def\uira@equipe{#1}}
+\newcommand{\disciplina}[1]{\def\uira@disciplina{#1}}
+\newcommand{\alunos}[1]{\def\uira@alunos{#1}}
+\newcommand{\numeroEquipe}[1]{\def\uira@numeroEquipe{#1}}
+\newcommand{\email}[1]{\def\uira@email{#1}}
+\newcommand{\orientador}[1]{\def\uira@orientador{#1}}
+\newcommand{\logounifei}[1]{\def\uira@logounifei{#1}}
+\newcommand{\logoequipe}[1]{\def\uira@logoequipe{#1}}
+\newcommand{\logoaero}[1]{\def\uira@logoaero{#1}}
+\newcommand{\logocapa}[1]{\def\uira@logocapa{#1}}
+\newcommand{\datarelatorio}[1]{\def\uira@data{#1}}
+
+\makeatother
+
+%===================================================================
+% PAGINA INICIAL
+%===================================================================
+
+\makeatletter
+
+\newcommand{\maketitlepage}{%
+	\begin{titlepage}
+	    \newgeometry{top=1cm,bottom=1cm,left=2cm,right=2cm}
+	    \begin{adjustwidth}{-1.5cm}{-1.5cm}
+	    
+		\centering
+        
+        \textbf{\LARGE \uira@instituicao}\\[0.5cm]
+        \textbf{\Large \uira@competicao}\\[1.0cm]
+        
+        \vfill
+        
+        \ifx\uira@logocapa\empty
+        \else
+            \includegraphics[width=1\textwidth]{\uira@logocapa}\\
+        \fi
+        
+        \vfill
+        
+	    \rule{\linewidth}{0.2mm}\\[0.4cm]
+        {%
+            \LARGE \bfseries \uira@disciplina \\[0.4cm]
+            \LARGE N\textdegree{} \uira@numeroEquipe{} - \uira@equipe
+        }\\
+	    \rule{\linewidth}{0.2mm}\\
+        
+        \vfill
+        
+        \begin{multicols}{2}
+            \large \uira@alunos
+        \end{multicols}
+        
+        \vfill
+        
+        {\large \textbf{Orientador:} \uira@orientador}\\[0.2cm]
+        {\large \uira@email}\\
+        
+        \vfill
+        
+	    {\large \uira@data}
+	    
+	    \end{adjustwidth}
+	    \restoregeometry
+        \clearpage
+	\end{titlepage}
+}
+
+\makeatother
+
+%===================================================================
+% ESTILOS DE PAGINA
+%===================================================================
+
+\RequirePackage{lastpage}
+
+\makeatletter
+
+% Cabecalho padrao
+\newcommand{\uira@cabecalho}[1]{%
+    \begingroup
+    \renewcommand{\arraystretch}{0.85}%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}L R@{}}
+        \vspace{-0.4cm}
+        \nouppercase{#1} & 
+        \includegraphics[height=6mm]{\uira@logoaero}
+    \end{tabularx}%
+    \hrule
+    \endgroup
+}
+
+% Rodape
+\newcommand{\uira@rodape}{%
+    \hrule
+    \scriptsize
+    \vspace{1.0mm}
+    \uira@competicao \hfill Página: \thepage\space de \pageref{LastPage}
+}
+
+% Estilo principal
+\fancypagestyle{IHA-fancy-plain}{%
+    \fancyhf{}
+    \fancyhead[C]{\uira@cabecalho{\leftmark}}
+    \fancyfoot[C]{\uira@rodape}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% Estilo do sumario
+\fancypagestyle{ToC}{%
+    \fancyhf{}
+    \fancyhead[C]{\uira@cabecalho{\textbf{\leftmark}}}
+    \fancyfoot[C]{\uira@rodape}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% Estilo plain usado automaticamente em inicio de capitulos
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyhead[C]{\uira@cabecalho{\textbf{\leftmark}}}
+    \fancyfoot[C]{\uira@rodape}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% Garante que o documento comece usando o estilo correto
+\AtBeginDocument{%
+    \pagestyle{IHA-fancy-plain}
+}
+
+\makeatother
+
+%===================================================================
+% ESTILO DOS CAPITULOS
+%===================================================================
+
+\makeatletter
+
+\renewcommand{\@makechapterhead}[1]{%
+	{%
+    \setlength{\parindent}{4em}
+    \raggedright
+    \normalfont
+	\bfseries\LARGE
+    \thechapter~#1
+    \par\nobreak
+    \vspace{0.5cm}
+	}%
+}
+
+\renewcommand{\@makeschapterhead}[1]{%
+	\vspace*{0pt}%
+	{%
+    \setlength{\parindent}{4em}
+    \raggedright
+    \normalfont
+	\bfseries\Large
+    #1
+    \par\nobreak
+    \vspace{1cm}
+	}%
+}
+
+\makeatother
+
+%===================================================================
+% CODIGOS
+%===================================================================
+
+\RequirePackage{listings}
+
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{
+    language=Matlab,
+    breaklines=true,
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},
+    morekeywords=[2]{1},
+    keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle={\tiny \color{black}},
+    numbersep=9pt
+}
+
+%===================================================================
+% BIBLIOGRAFIA
+%===================================================================
+
+\RequirePackage[round]{natbib}
+\bibliographystyle{abbrvnat}
+
+%===================================================================
+% HYPERREF
+% Deve ficar perto do final.
+%===================================================================
+\newcommand{\sdef}[2]{\hypertarget{sig:#1}{#2}}
+
+\RequirePackage[
+    colorlinks=true,
+    urlcolor=blue,
+    filecolor=black,
+    citecolor=black,
+    linkcolor=black
+]{hyperref}
+
+%===================================================================
+% \sref{texto} -> hyperlink para a Lista de Simbolos
+%===================================================================
+\newcommand{\sref}[1]{\hyperref[sig:lista]{#1}}
+
+%===================================================================
+% FIM DO TEMPLATE
+%===================================================================

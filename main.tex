@@ -1,0 +1,76 @@
+\documentclass[oneside,12pt,a4paper]{report}
+
+\usepackage{uira_template}
+\selectlanguage{brazilian}
+
+% INFORMACAO DA EQUIPE
+\instituicao{Universidade Federal de Itajubá - UNIFEI}
+\competicao{XXVIII Competição SAE Brasil Aerodesign - 2026}
+\equipe{Uirá Aerodesign}
+\disciplina{Relatório Técnico Uirá Aerodesign}
+\orientador{Prof. Dr. Yohan Díaz}
+\datarelatorio{01 de Janeiro de 2026}
+\numeroEquipe{001}
+\email{uira@unifei.edu.br}
+
+\alunos{
+        Daniel Godoy\\
+        Fábio Menezes\\
+        Gabriel Machado\\
+        Gabriel Ribeiro\\
+        Gabriela Fincatti\\
+        Henrique Goulart\\
+        Henry Matheus Hagemann\\
+        Lucas Zacchi\\
+        Luís Henrique Laurindo\\
+        Matheus Morth\\
+        Rafael Neves\\
+        Renan Barbosa\\
+        Vinícius Montanari\\
+        Yasmim Vilas Boas\\
+        Yudi Ribeiro\\
+        }
+
+
+\logocapa{./logos/Uira_Logo.pdf}
+\logoaero{./logos/logoSAEBRASIL.png}
+
+
+\begin{document}
+
+\maketitlepage
+
+% SUMÁRIO
+\pagestyle{ToC}
+\tableofcontents
+\clearpage
+
+% A partir daqui, estilo normal com cabecalho e rodape
+\pagestyle{IHA-fancy-plain}
+
+
+% LISTA DE SÍMBOLOS
+\include{sec/simbolos}
+
+% LISTA DE INPUTS
+\include{sec/inputs}
+
+% TEXTO TÉCNICO
+% TEXTO TÉCNICO
+\pagestyle{IHA-fancy-plain}
+\include{sec/documento}
+
+% LISTA DE OUTPUTS
+\include{sec/outputs}
+
+% BIBLIOGRAFIA
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+\hyphenpenalty=10000
+\bibliography{referencias}
+
+% APÊNDICE
+% \include{sec/apendice}
+
+\end{document}
