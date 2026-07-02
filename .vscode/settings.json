@@ -1,0 +1,131 @@
+{
+  // =========================================================
+  // Build Automático
+  // =========================================================
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // =========================================================
+  // Root File
+  // =========================================================
+  "latex-workshop.latex.rootFile.useSubFile": false,
+  // =========================================================
+  // Diretório de Saída do PDF
+  // =========================================================
+  "latex-workshop.latex.outDir": "%DIR%",
+  // =========================================================
+  // Recipe Principal
+  // =========================================================
+  "latex-workshop.latex.recipe.default": "latexmk: PDF na raiz, auxiliares em build",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk: PDF na raiz, auxiliares em build",
+      "tools": [
+        "latexmk-pdf-build"
+      ]
+    }
+  ],
+  // =========================================================
+  // Ferramentas (Onde a mágica do 'build/' acontece)
+  // =========================================================
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-pdf-build",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-shell-escape",
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-emulate-aux-dir",
+        "-auxdir=%OUTDIR%/build",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    }
+  ],
+  // =========================================================
+  // Live Share
+  // =========================================================
+  "liveshare.autoShareServers": true,
+  "liveshare.guestApprovalRequired": true,
+  "liveshare.anonymousGuestApproval": "reject",
+  // =========================================================
+  // Git Fetch a cada 5 minutos
+  // =========================================================
+  "git.autofetch": true,
+  "git.autofetchPeriod": 300,
+  // =========================================================
+  // PDF Viewer & SyncTeX
+  // =========================================================
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.ref.viewer": "auto",
+  "latex-workshop.view.pdf.zoom": "auto",
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.latex.build.enableMagicComments": true,
+  // =========================================================
+  // Layout das Abas (VS Code Nativo)
+  // =========================================================
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.openSideBySideDirection": "right",
+  "workbench.editor.openPositioning": "right",
+  "workbench.editor.enablePreview": false,
+  // =========================================================
+  // Mensagens
+  // =========================================================
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": true,
+  // =========================================================
+  // Trigger Task on Save
+  // =========================================================
+  "triggerTaskOnSave.tasks": {
+    "LaTeX Lint": [
+      "**/*.tex"
+    ]
+  },
+  "triggerTaskOnSave.showNotifications": false,
+  "triggerTaskOnSave.restart": false,
+  // =========================================================
+  // Esconder arquivos no Explorer do VS Code
+  // =========================================================
+  "files.exclude": {
+    "**/.vscode": true,
+    "**/.git": true,
+    "**/build": true,
+    "**/tools": true,
+    ".gitignore": true,
+    "main.synctex.gz": true,
+    "README.md": true,
+    "uira_template.sty": true,
+    "**/check_palavras": true,
+    "**/logos": true,
+    "**/wordcount": true
+  },
+  // =========================================================
+  // Limpeza de Arquivos (Clean)
+  // =========================================================
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.fls",
+    "*.fdb_latexmk",
+    "*.log",
+    "*.out",
+    "*.toc",
+    "*.lof",
+    "*.lot",
+    "build/*.aux",
+    "build/*.bbl",
+    "build/*.blg",
+    "build/*.fls",
+    "build/*.fdb_latexmk",
+    "build/*.log",
+    "build/*.out",
+    "build/*.toc",
+    "build/*.lof",
+    "build/*.lot",
+    "build/svg-inkscape"
+  ],
+  "editor.wordWrap": "on"
+}

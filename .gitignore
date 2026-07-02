@@ -1,0 +1,59 @@
+# Build do LaTeX
+build/
+
+# Arquivos auxiliares LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.lol
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.ilg
+*.ind
+*.idx
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# PDF compilado (mantém PDFs usados como figuras e logos)
+*.pdf
+!figuras/**/*.pdf
+!logos/**/*.pdf
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+
+# VS Code: ignora tudo, exceto arquivos compartilhados com a equipe
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# PyAeroCounter (baixado pelo setup, não vai pro Git)
+tools/pyaerocounter/
+
+#arquivos da contagem de palavra
+wordcount/
